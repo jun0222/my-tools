@@ -1,0 +1,32 @@
+<span id="iruka" class="box">0</span>
+
+<style>
+.box {
+  background-color: black;
+  font-weight: bold;
+  color: #FFF;
+  font-size: 72px;
+  border-radius: 20px;
+  padding: 20px;
+}
+</style>
+
+<script>
+  var a = 0;
+  var box;
+  var tm;
+
+  window.onload = function() {
+      box = document.getElementById("iruka");
+      tm = setInterval("kujira()",1000);
+  };
+
+  function kujira() {
+      a += 1;
+      box.innerHTML = a;
+      if(a >= 300) {
+        clearInterval(tm);
+        window.alert("休憩終了！作業を再開しよう！")
+      }
+  }
+</script>
