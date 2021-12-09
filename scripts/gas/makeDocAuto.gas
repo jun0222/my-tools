@@ -1,0 +1,5 @@
+function makeDocAuto() {
+  var date = new Date();
+  var toMonth = Utilities.formatDate( date, 'Asia/Tokyo', 'yyyyMM')
+  DocumentApp.create("output_all_" + toMonth);
+}
