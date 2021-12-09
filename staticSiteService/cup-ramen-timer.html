@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>カップラーメンTimer</title>
+</head>
+<body>
+    <div class="container">
+        <div class="clock" id="RealtimeClockArea"></div>
+        <div style="text-align: center;">
+            <input type="text" id="comment-field" value="調理開始" placeholder="コメントを入力してください">
+            <input type="button" value="ボタン" onclick="setTime()">
+        </div>
+        <div style="text-align: center;">
+            <span id="show-comment-field"></span>
+            <span id="show-time-field"></span>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+function zeroPadding(num,length){
+    return ('0' + num).slice(-length);
+}
+function showClock(){
+    var nowTime = new Date();
+    var nowHour = nowTime.getHours();
+    var nowMin  = nowTime.getMinutes();
+    var nowSec  = nowTime.getSeconds();
+    var msg =  zeroPadding(nowHour, 2) + ":" + zeroPadding(nowMin, 2) + ":" + zeroPadding(nowSec, 2) ;
+    document.getElementById("RealtimeClockArea").innerHTML = msg;
+}
+setInterval('showClock()',1000);
+
+
+var array = []
+function setTime(){
+    let com = document.getElementById('comment-field').value;
+    localStorage.setItem('comment', com)
+    localStorage.setItem('time', document.getElementById('RealtimeClockArea').textContent)
+};
+
+function showTimes(){
+    document.getElementById('show-comment-field').textContent = localStorage.getItem('comment');
+    document.getElementById('show-time-field').textContent = localStorage.getItem('time');
+};
+setInterval('showTimes()',1000);
+
+</script>
+
+<style>
+/* Google Fonts 読み込み */
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
+/* 時計の共通スタイル */
+.clock {
+    font-family: 'Share Tech Mono', monospace;
+    line-height: 1.2;
+    text-align: center;
+    font-size: 48px;
+}
+</style>
