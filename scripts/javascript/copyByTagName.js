@@ -1,6 +1,10 @@
 // 指定したタグ名のテキストを取得
-const tagName = "p";
-const elements = document.getElementsByTagName(tagName);
+var tagName = "h2";
+var elements = document.getElementsByTagName(tagName);
+
+// 指定したクラス名のテキストを取得
+// var className = "content";
+// var elements = document.getElementsByClassName(className);
 
 // elementsの中身をすべて取得
 let text = "";
